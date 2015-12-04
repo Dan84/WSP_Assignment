@@ -5,7 +5,13 @@ class UsersController < ApplicationController
       end
 
   def index
-    @users = User.all
+
+    if(current_user.trainer?)
+     @users = User.all
+    else
+      @users = User.where("trainer" => true)
+    end
+
   end
       
   def new

@@ -4,9 +4,16 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Help", help_path %></li>
+
+            <% if logged_in? and current_user.trainer?%>
+            <li><%= link_to "Manage Classes", allclasses_path %></li>
+            <% elsif logged_in? %>
+            <li><%= link_to "View Classes", allclasses_path %></li>
+            <%end%>
             <% if logged_in? and current_user.trainer?%>
               <li><%= link_to "Users", users_path %></li>
+              <% elsif logged_in? %>
+              <li><%= link_to "Trainers", users_path %></li>
               <% end %>
               <% if logged_in?%>
               <li class="dropdown">

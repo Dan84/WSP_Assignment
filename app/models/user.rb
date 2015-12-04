@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	attr_accessor :remember_token
 
+	has_many :exercise_classes
+
 	validates :name, presence: true, length: {in: 4..30}
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true,

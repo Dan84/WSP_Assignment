@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
   
   
+  get 'exercise_classes/show'
+
+  get 'exercise_classes/index'
+
+  get 'exercise_classes/create'
+
+  #get 'exercise_classes/new'
+
   #get 'sessions/new'
 
   resources :users
+  resources :exercise_classes
   root 'static_pages#home'
 
 
@@ -14,6 +23,8 @@ Rails.application.routes.draw do
   get 'login'   =>  'sessions#new'
   post 'login'  =>  'sessions#create'
   delete 'logout' =>  'sessions#destroy'
+  get 'newclass'  =>  'exercise_classes#new'
+  get 'allclasses'  =>  'exercise_classes#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

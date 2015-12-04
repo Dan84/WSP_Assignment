@@ -1,0 +1,12 @@
+<h1>All Classes</h1>
+<ul class="users">
+  <% @exerciseclasses.each do |exclass| %>
+    <li>
+      
+      <%= link_to exclass.name, exclass %>
+    </li>
+  <% end %>
+</ul>
+
+<button><%= link_to "New Class", newclass_path, class: "btn btn-primary" %></button>
+<button><%= link_to "Show Classes", allclasses_path, class: "btn btn-primary" %></button>
