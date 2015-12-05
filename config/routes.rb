@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   
   
+  get 'class_bookings/show'
+
+  get 'class_bookings/index'
+
+  get 'class_bookings/new'
+
+  get 'class_bookings/create'
+
   get 'exercise_classes/show'
 
   get 'exercise_classes/index'
@@ -13,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :exercise_classes
+  resources :class_bookings, only: [:create, :destroy]
   root 'static_pages#home'
 
 

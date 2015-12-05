@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 	attr_accessor :remember_token
 
-	has_many :exercise_classes
+	has_many :exercise_classes, dependent: :destroy
+	has_many :class_bookings
+	has_many :attendances, :through => :class_bookings, :source => :exercise_class 
 
 	validates :name, presence: true, length: {in: 4..30}
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -40,5 +42,18 @@ class User < ActiveRecord::Base
 	def forget
 		update_attribute(:remember_digest, nil)
 	end
+
+	def attending?(exerciseclass)
+    	exerciseclass.participants.include?(self)
+  	end
+
+	def attend!(exerciseclass)
+    	self.class_bookings.create!(exercise_class_id: exerciseclass.id)
+  	end
+
+
+  	def cancel!(exerciseclass)
+    	self.class_bookings.find_by(exercise_class_id: exerciseclass.id).destroy
+  	end
 
 end

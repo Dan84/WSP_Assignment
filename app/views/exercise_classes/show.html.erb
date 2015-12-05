@@ -11,4 +11,16 @@
           </h1>
         </section>
       </aside>
+      <section class="event_attendence">
+      
+<%= render 'attend_form' %></div>
+
+          </section>
+
+          <ol>
+<% @exerciseclass.participants.each do |attendee| %>
+   <li><%= link_to attendee.name, attendee %></li>
+
+<% end %>
+</ol>
     </div>
