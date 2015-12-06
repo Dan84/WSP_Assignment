@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	has_many :exercise_classes, dependent: :destroy
 	has_many :class_bookings
 	has_many :attendances, :through => :class_bookings, :source => :exercise_class 
+	has_many :articles, dependent: :destroy
 
 	validates :name, presence: true, length: {in: 4..30}
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

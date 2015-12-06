@@ -1,0 +1,17 @@
+<% provide(:title, @article.title) %>
+    <div class="article">
+      
+        <section class="user_info">
+          <h1> <%= @article.title%> </h1>
+            
+           
+            <%= simple_format(@article.content) %>
+           
+            <%= @article.user.name %>
+          
+        </section>
+
+
+
+
+        

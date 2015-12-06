@@ -13,15 +13,16 @@ class ExerciseClassesController < ApplicationController
         @exercise_class = current_user.exercise_classes.build(secure_post) 
         if @exercise_class.save
           flash[:success] = "Class created!"
-          redirect_to root_url
+          redirect_to exercise_classes_path
       end
 
  
   	
   end
 
-   def new
+  def new
   	@exerciseclass = ExerciseClass.new
+    
   end
 
 

@@ -1,26 +1,26 @@
  <% provide(:title, @exerciseclass.name) %>
     <div class="row">
-      <aside class="col-md-4">
+      <aside class="col-md-10">
         <section class="user_info">
-          <h1>
+          
             
-            <%= @exerciseclass.name %>
-            <%= @exerciseclass.day %>
-            <%= @exerciseclass.duration %>
-            <%= @exerciseclass.user.name %>
-          </h1>
+           <h1> <%= @exerciseclass.name %></h1>
+            <p><%= @exerciseclass.day %></p>
+            <p><%= @exerciseclass.duration %></p>
+            <p><%= @exerciseclass.user.name %></p>
+          
         </section>
       </aside>
       <section class="event_attendence">
       
-<%= render 'attend_form' %></div>
+          <%= render 'attend_form' %></div>
 
-          </section>
+      </section>
 
-          <ol>
-<% @exerciseclass.participants.each do |attendee| %>
-   <li><%= link_to attendee.name, attendee %></li>
+    <ol>
+        <% @exerciseclass.participants.each do |attendee| %>
+          <li><%= link_to attendee.name, attendee %></li>
 
-<% end %>
-</ol>
-    </div>
+        <% end %>
+    </ol>
+    

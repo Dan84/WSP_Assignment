@@ -5,7 +5,10 @@
             <%= render 'shared/user_info' %>
           </section>
 
-           
+          <% if current_user.trainer? %>
+           <%= button_to "New Article", newarticle_path, :method => "get", class: "btn btn-sm btn-primary" %>
+           <%end %>
+            <%= button_to "Show Articles", articles_path, :method => "get",class: "btn btn-sm btn-primary" %>
          
         </aside>
 

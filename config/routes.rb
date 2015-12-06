@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   
+  mount Ckeditor::Engine => '/ckeditor'
   get 'class_bookings/show'
 
   get 'class_bookings/index'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :exercise_classes
+  resources :articles
   resources :class_bookings, only: [:create, :destroy]
   root 'static_pages#home'
 
@@ -32,8 +34,10 @@ Rails.application.routes.draw do
   get 'login'   =>  'sessions#new'
   post 'login'  =>  'sessions#create'
   delete 'logout' =>  'sessions#destroy'
-  get 'newclass'  =>  'exercise_classes#new'
+  #get 'newclass'  =>  'exercise_classes#new'
   get 'allclasses'  =>  'exercise_classes#index'
+  get 'newarticle'  =>  'articles#new'
+  get 'articles'  =>  'articles#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

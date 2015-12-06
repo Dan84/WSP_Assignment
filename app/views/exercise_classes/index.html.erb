@@ -7,6 +7,6 @@
     </li>
   <% end %>
 </ul>
-
-<button><%= link_to "New Class", newclass_path, class: "btn btn-primary" %></button>
-<button><%= link_to "Show Classes", allclasses_path, class: "btn btn-primary" %></button>
+<% if current_user.trainer? %>
+<%= button_to "New Class", new_exercise_class_path, method: :get, class: "btn btn-primary" %>
+<%end%>
