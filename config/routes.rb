@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
   
+  get 'comments/index'
+
   mount Ckeditor::Engine => '/ckeditor'
   get 'class_bookings/show'
 
@@ -22,7 +24,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :exercise_classes
-  resources :articles
+  resources :articles 
+  resources :comments
+  
   resources :class_bookings, only: [:create, :destroy]
   root 'static_pages#home'
 

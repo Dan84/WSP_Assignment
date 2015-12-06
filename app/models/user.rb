@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	has_many :class_bookings
 	has_many :attendances, :through => :class_bookings, :source => :exercise_class 
 	has_many :articles, dependent: :destroy
+	has_many :comments, dependent: :destroy
 
 	validates :name, presence: true, length: {in: 4..30}
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -56,5 +57,7 @@ class User < ActiveRecord::Base
   	def cancel!(exerciseclass)
     	self.class_bookings.find_by(exercise_class_id: exerciseclass.id).destroy
   	end
+
+  	
 
 end

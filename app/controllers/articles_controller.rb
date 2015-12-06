@@ -1,8 +1,11 @@
 class ArticlesController < ApplicationController
-	before_action :admin_user,     only: :destroy
+	before_action :admin_user, only: [:create, :destroy]
 
 	def show
 		@article = Article.find(params[:id])
+		@comment  = current_user.comments.build
+
+		@discussion_comments = @article.discussion
 
 	end
 
