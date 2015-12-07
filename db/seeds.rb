@@ -26,7 +26,7 @@ User.create!(name:  "Angela Tobin",
              password:              "password",
              password_confirmation: "password")
 
-User.create!(name:  "Pamela Lambert",
+User.create!(name:  "Pamela Lambert (trainer)",
              email: "pamela@example.ie",
              password:              "password",
              password_confirmation: "password",
