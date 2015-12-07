@@ -1,12 +1,14 @@
- <% provide(:title, @exerciseclass.name) %>
+ <% provide(:title, @exerciseclass.title) %>
     <div class="row">
       <aside class="col-md-10">
         <section class="user_info">
           
             
-           <h1> <%= @exerciseclass.name %></h1>
-            <p><%= @exerciseclass.day %></p>
-            <p><%= @exerciseclass.duration %></p>
+           <h1> <%= @exerciseclass.title %></h1>
+            <p><%= @exerciseclass.description %></p>
+            <p><%= @exerciseclass.class_style.style %></p>
+            <p><%= @exerciseclass.class_level.level %></p>
+            <p><%= @exerciseclass.date %></p>
             <p><%= @exerciseclass.user.name %></p>
           
         </section>
@@ -16,7 +18,10 @@
           <%= render 'attend_form' %></div>
 
       </section>
-
+      <% if current_user.trainer? %>
+      <%= button_to "Edit", edit_exercise_class_path(@exerciseclass), method: :get, class: "btn btn-sm btn-primary " %>
+      <%= button_to "Delete", @exerciseclass, method: :delete, data: { confirm: "You sure?" } ,class: "btn btn-sm btn-primary " %>
+      <%end%>
     <ol>
         <% @exerciseclass.participants.each do |attendee| %>
           <li><%= link_to attendee.name, attendee %></li>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get 'exercise_classes/index'
 
-  get 'exercise_classes/create'
+  
 
   #get 'exercise_classes/new'
 
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get 'login'   =>  'sessions#new'
   post 'login'  =>  'sessions#create'
   delete 'logout' =>  'sessions#destroy'
-  #get 'newclass'  =>  'exercise_classes#new'
+  get 'newclass'  =>  'exercise_classes#new'
   get 'allclasses'  =>  'exercise_classes#index'
   get 'newarticle'  =>  'articles#new'
   get 'articles'  =>  'articles#index'

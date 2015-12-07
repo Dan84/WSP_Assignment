@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206164115) do
+ActiveRecord::Schema.define(version: 20151206223444) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -50,6 +50,24 @@ ActiveRecord::Schema.define(version: 20151206164115) do
   add_index "class_bookings", ["exercise_class_id"], name: "index_class_bookings_on_exercise_class_id"
   add_index "class_bookings", ["user_id"], name: "index_class_bookings_on_user_id"
 
+  create_table "class_levels", force: :cascade do |t|
+    t.string   "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "class_styles", force: :cascade do |t|
+    t.string   "style"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "class_types", force: :cascade do |t|
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -63,12 +81,14 @@ ActiveRecord::Schema.define(version: 20151206164115) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "exercise_classes", force: :cascade do |t|
-    t.string   "name"
-    t.string   "day"
-    t.integer  "duration"
+    t.string   "title"
+    t.string   "description"
+    t.integer  "class_style_id"
+    t.integer  "class_level_id"
+    t.date     "date"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "exercise_classes", ["user_id", "created_at"], name: "index_exercise_classes_on_user_id_and_created_at"

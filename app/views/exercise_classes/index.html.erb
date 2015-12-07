@@ -3,7 +3,7 @@
   <% @exerciseclasses.each do |exclass| %>
     <li>
       
-      <%= link_to exclass.name, exclass %>
+      <%= link_to exclass.class_style.style, exclass %>
     </li>
   <% end %>
 </ul>
