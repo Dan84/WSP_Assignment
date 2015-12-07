@@ -17,6 +17,9 @@
   <div>
     <%= f.cktext_area :content, rows: 10 %>
   </div>
+    <%= f.label :commentable, 'Allow comments'.html_safe  , {class: "checkbox inline"} %>
+    <%= f.check_box (:commentable)%>
+    
   <div>
      <%= f.submit "Add Class", class: "btn btn-primary" %>
   </div>

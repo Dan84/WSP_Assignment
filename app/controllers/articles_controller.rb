@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-	before_action :admin_user, only: [:create, :destroy]
+	before_action :trainer_user, only: [:create, :edit, :uptate,:destroy]
 
 	def show
 		@article = Article.find(params[:id])
@@ -60,9 +60,12 @@ class ArticlesController < ApplicationController
 
     private
     def secure_article
-    	params.require(:article).permit(:title,:content)
+    	params.require(:article).permit(:title,:content,:commentable)
     end
     
+    def trainer_user
+      redirect_to(root_url) unless current_user.trainer?
+    end
 
 
 
