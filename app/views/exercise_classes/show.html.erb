@@ -28,7 +28,7 @@
         <%end%>
         <div class="panel panel-default">
             <div class="panel-heading">
-              <h1 class="panel-title"><h4> Attening</h1>
+              <h1 class="panel-title"><h4> Attending</h1>
             </div>
             <ul>
                 <% @exerciseclass.participants.each do |attendee| %>
@@ -42,6 +42,7 @@
 
 
  </div>
+<% unless current_user.trainer? %> 
  <div class="row">
       <div class="col-md-3 col-xs-push-6">
         <% unless @exerciseclass.date.past? %>   
@@ -50,6 +51,7 @@
         </div>
 
 </div>
+<%end%>
 
 
 

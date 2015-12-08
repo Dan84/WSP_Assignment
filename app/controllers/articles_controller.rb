@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	before_filter :logged_in_user
-	before_action :trainer_user, only: [:create, :edit, :uptate,:destroy]
+	before_action :is_user_trainer, only: [:create, :edit, :uptate,:destroy]
 
 	def show
 		@article = Article.find(params[:id])
@@ -17,20 +17,23 @@ class ArticlesController < ApplicationController
 	def create
 		
 		
-        @article = current_user.articles.build(secure_article) 
-        if @article.save
-          flash[:success] = "Posted Article"
-          redirect_to @article
-        else
-        	render 'new'
-      end
+
+		 @article = current_user.articles.build(secure_article) 
+			 if @article.save
+			    flash[:success] = "Posted Article"
+			          redirect_to @article
+			  else
+			        	render 'new'
+			  end		
+		
   	  	
 	end
 
 
 
 	def new
-		@article = Article.new
+			is_user_trainer
+			@article = Article.new
 	end
 
 
@@ -64,9 +67,12 @@ class ArticlesController < ApplicationController
     	params.require(:article).permit(:title,:content,:commentable)
     end
     
-    def trainer_user
-      redirect_to(root_url) unless current_user.trainer?
-    end
+    def is_user_trainer
+         unless current_user.trainer?
+         	redirect_to(root_url)
+        	flash[:danger] = "You do not have permission to view this page"
+        end
+    end 
 
 
 

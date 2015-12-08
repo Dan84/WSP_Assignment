@@ -15,10 +15,10 @@ class UsersController < ApplicationController
 
             if !logged_in?
                 redirect_to login_url
-              elsif (current_user.trainer?)
-                @users = User.all 
-                else
-                  @users = User.where("trainer" => true) 
+              else
+                @users = User.paginate(page: params[:page])
+                
+                  #@users = User.where("trainer" => true) 
                   
                 end     
 end
@@ -64,6 +64,14 @@ end
 
 
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
+  end
+
+
+
 
 
   private
@@ -89,9 +97,7 @@ end
 
 
 
-    def is_user_admin
-        redirect_to(action: :new) unless current_user.try(:is_trainer?)
-    end 
+    
 
 
 

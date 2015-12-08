@@ -7,12 +7,21 @@
         </aside>
         </div>
               <div class="row">
-                <div class="col-md-4 ">
-                      <% if current_user.trainer? %>
-                       <%= button_to "New Article", newarticle_path, :method => "get", class: "btn btn-sm btn-primary" %>
-                       <%end %>
+                <div class="col-md-8 ">
+                  <div class="panel panel-default">
+                    <div class="panel panel-body">
+                      <h3><%= "Welcome #{current_user.name}" %></h3>
+                      <div class="col-md-3 ">
+
+                        <% if current_user.trainer? %>
+                      
+                        <%= button_to "New Article", newarticle_path, :method => "get", class: "btn btn-sm btn-primary" %>
+                        <%end %>
+                      </div>
+                      </div>
+                    </div>
                 </div>
-              <div class="col-md-4 col-md-push-4 ">
+              <div class="col-md-4 ">
                      <%=render 'articles/article_feed'%>
                 <div class="col-md-4 col-md-push-9">
                     <%= button_to "Go to Articles", articles_path, :method => "get",class: "btn btn-sm btn-primary" %>
@@ -31,9 +40,8 @@
         <h1>Welcome to Furious Fitness</h1>
 
         <h2>
-          This is the home page for the
-          <a href="http://www.railstutorial.org/">The Ultimate Fitness Centre</a>
-          sample application.
+          This is the home page for the The Ultimate Fitness Centre
+          
         </h2>
 
         <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>

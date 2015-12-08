@@ -24,6 +24,31 @@
 }
 
 
+
+
+    .radio{
+      
+      
+      display: inline-block;
+      width: 90px;
+    height: 20px;
+    text-align: center;
+    vertical-align: top;
+    padding-top: 40px;
+
+     
+
+    }
+
+    .checkbox{
+
+    
+    margin-right: 10px;
+
+    }
+
+
+
 /* Users index */
 
 .users {
@@ -64,11 +89,17 @@
 
     .center {
       text-align: center;
+
     }
 
     .center h1 {
       margin-bottom: 10px;
+      
     }
+
+    .jumbotron {
+      background-image: url("fitness.jpg");
+      background-size: cover;}
 
     /* typography */
 

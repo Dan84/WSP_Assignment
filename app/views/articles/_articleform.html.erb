@@ -2,14 +2,14 @@
   <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :title %>
                 
-      <%= f.text_field :title %>
+      <%= f.text_field :title ,{class: 'form-control' }%>
                 
       <%= f.label :content %>
                 
-      <%= f.cktext_area :content, rows: 10, :ckeditor => {:toolbar => 'mini'}   %>
+      <%= f.cktext_area :content, rows: 10, :ckeditor => {:toolbar => 'mini'}   %><br>
                 
-      <%= f.label :commentable, 'Allow comments'.html_safe  , {class: "checkbox:inline"} %>
-      <%= f.check_box (:commentable)%>
+      <%= f.label :commentable, 'Allow comments'.html_safe  , {class: ""} %>
+      <%= f.check_box (:commentable), {class: 'checkbox'}%>
       <div class = "row">
         <div class = "col-md-3 col-md-push-9">
      <%= f.submit yield(:button_text), class: "btn btn-success" %>

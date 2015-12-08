@@ -1,5 +1,6 @@
 class ExerciseClassesController < ApplicationController
   before_filter :logged_in_user
+  before_action :is_user_trainer, only: [:create, :edit, :uptate,:destroy]
 
   
   def show
@@ -28,6 +29,7 @@ class ExerciseClassesController < ApplicationController
 
 
   def new
+    is_user_trainer
   	@exerciseclass = ExerciseClass.new
     
   end
@@ -36,7 +38,7 @@ class ExerciseClassesController < ApplicationController
       @exerciseclass = ExerciseClass.find(params[:id])
       if @exerciseclass.update_attributes(secure_exclass)
          flash[:success] = "Class Updated"
-         redirect_to article_path
+         redirect_to allclasses_path
       else
         render action: "edit"
       end
@@ -59,6 +61,14 @@ class ExerciseClassesController < ApplicationController
  def secure_exclass
       params.require(:exercise_class).permit(:title,:description,:class_style_id,:class_level_id,:date)
  end
+
+
+ def is_user_trainer
+         unless current_user.trainer?
+          redirect_to(root_url)
+          flash[:danger] = "You do not have permission to view this page"
+        end
+    end 
 
 
 end

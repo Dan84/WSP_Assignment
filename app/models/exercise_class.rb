@@ -8,7 +8,7 @@ class ExerciseClass < ActiveRecord::Base
 	validates  :user_id, presence: true
 	validates  :class_style_id, presence: true 
     validates  :class_level_id, presence: true 
-    validates  :title, presence: true, length: {in: 5..15}
+    validates  :title, presence: true, length: {in: 5..25}
   	validates  :description, presence: true, length: {minimum: 10}
   	validates_date :date, :on_or_after => :today
 

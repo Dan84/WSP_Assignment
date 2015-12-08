@@ -14,13 +14,13 @@
           </h1>
         </section>
       </aside>
-    </div>
+    </div><br>
 <div class="row">
       <div class="col-md-4">
           <div class="panel panel-default">
                <div class="panel panel-body">
                         <% if (@user.trainer?)%>
-                            <h5>Running Classes</h5>
+                            <h5>Trainers Classes</h5> 
                             <% @createdclasses.each do |exclass| %><br><hr>
                             <%= link_to exclass.title, exclass %>
                             <%end%>
