@@ -1,4 +1,7 @@
 class ExerciseClassesController < ApplicationController
+  before_filter :logged_in_user
+
+  
   def show
   	@exerciseclass = ExerciseClass.find(params[:id])
   end
@@ -15,7 +18,7 @@ class ExerciseClassesController < ApplicationController
           flash[:success] = "Class created!"
           redirect_to @exerciseclass
         else
-          flash[:danger] = "Error"
+          
           render 'new'
         end  	
   end

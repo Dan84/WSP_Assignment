@@ -8,7 +8,11 @@ class ExerciseClass < ActiveRecord::Base
 	validates  :user_id, presence: true
 	validates  :class_style_id, presence: true 
     validates  :class_level_id, presence: true 
-    validates  :title, presence: true, length: { maximum: 50 }
-  	validates  :description, presence: true
-  	validates  :date , presence: true 
+    validates  :title, presence: true, length: {in: 10..50}
+  	validates  :description, presence: true, length: {minimum: 10}
+  	validates  :date, presence:true
+
+
+
+  	
 end

@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+  	@articles = Article.all
   end
 
   def help
@@ -8,4 +9,14 @@ class StaticPagesController < ApplicationController
   def about
   	
   end
+
+
+  def index
+
+  	
+  	
+  end
+
+
+
 end

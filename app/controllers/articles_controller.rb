@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+	before_filter :logged_in_user
 	before_action :trainer_user, only: [:create, :edit, :uptate,:destroy]
 
 	def show

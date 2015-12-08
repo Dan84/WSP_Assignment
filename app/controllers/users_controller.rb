@@ -10,13 +10,18 @@ class UsersController < ApplicationController
 
   def index
 
-    if(current_user.trainer?)
-     @users = User.all
-    else
-      @users = User.where("trainer" => true)
-    end
+    
 
-  end
+            unless (is_user_admin)
+
+                @users = User.where("trainer" => true)  
+                else
+                  
+                  @users = User.all
+                end
+      
+end
+
       
   def new
   	@user = User.new
@@ -80,6 +85,12 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user == current_user
     end
+
+
+
+    def is_user_admin
+        redirect_to(action: :new) unless current_user.try(:is_trainer?)
+    end 
 
 
 

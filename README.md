@@ -1,6 +1,4 @@
-# Ruby on Rails Tutorial: sample application
+# Ruby on Rails Assignment: sample application
 
-    This is the sample application for the
-    [*Ruby on Rails Tutorial:
-    Learn Web Development with Rails*](http://www.railstutorial.org/)
-    by [Michael Hartl](http://www.michaelhartl.com/).
+    This is a college assignment for Web Server Programming
+    By Daniel Kehoe

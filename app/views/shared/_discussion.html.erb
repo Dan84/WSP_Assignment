@@ -1,5 +1,9 @@
 <% if @discussion_comments.any? %>
-      <ol class="comments">
+	<div class="row">
+         <div class="col-md-10">
+      <ul class="comments">
         <%= render @discussion_comments %>
-      </ol>
+      </ul>
+      	</div>
+    </div>
     <% end %>

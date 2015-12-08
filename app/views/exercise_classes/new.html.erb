@@ -3,29 +3,42 @@
 <% provide(:title, 'Exercise Class Entry') %>
 
 
-<div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <%= form_for(@exerciseclass) do |f| %>
-       <%= render 'error_messages', object: f.object %>
-          <%= f.label :title %>
-          <%= f.text_field :title %>
+ 
+      <div class="row">
 
-          <%= f.label :description %>
-          <%= f.text_area :description %>
+            <div class="col-md-6 col-md-offset-3">
+        <div class = "panel panel-default">
+          <div class = "panel-body">
+              
+              <%= form_for(@exerciseclass) do |f| %>
+             <%= render 'shared/error_messages', object: f.object %>
+             
+                <%= f.label :title %>
+                <%= f.text_field :title %>
+             
+             
+                <%= f.label :description %>
+                <%= f.text_area :description %>
+             
+            
+                <%= f.label :class_style %><br />
+                <%= f.collection_select(:class_style_id, ClassStyle.all, :id, :style, {}, {:class => "foo"} ) %>
+            
+                <%= f.label :class_level %>
+                <%= f.collection_radio_buttons(:class_level_id, ClassLevel.all.order(:level), :id, :level, {}, {:class => "bar"}   ) %>
+             
+                <%= f.label :date %>
+                <%= f.date_field :date%>
+            
 
-          <%= f.label :class_style %><br />
-          <%= f.collection_select(:class_style_id, ClassStyle.all, :id, :style, {}, {:class => "foo"} ) %>
+                <%= f.submit "Add Class", class: "btn btn-primary" %>
 
-          <%= f.label :class_level %>
-          <%= f.collection_radio_buttons(:class_level_id, ClassLevel.all.order(:level), :id, :level, {}, {:class => "bar"}   ) %>
+              <% end %>
 
-          <%= f.label :date %>
-          <%= f.date_field :date%>
-
-  
-
-
-          <%= f.submit "Add Class", class: "btn btn-primary" %>
-        <% end %>
+          </div>
+        </div>
+            </div>
       </div>
-    </div>
+
+
+

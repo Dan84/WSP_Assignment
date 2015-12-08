@@ -1,12 +1,27 @@
+
+
 <h1>All Classes</h1>
-<ul class="users">
-  <% @exerciseclasses.each do |exclass| %>
-    <li>
-      
-      <%= link_to exclass.class_style.style, exclass %>
-    </li>
-  <% end %>
-</ul>
-<% if current_user.trainer? %>
-<%= button_to "New Class", new_exercise_class_path, method: :get, class: "btn btn-primary" %>
-<%end%>
+	<div class="row">
+ 		<div class="col-md-8 col-xs-push-2">
+
+					 <% @exerciseclasses.each do |exclass| %>
+							<div class="panel panel-info">
+								<div class="panel-heading">
+								    <h3 class="panel-title"><%= exclass.title%></h3>
+								 </div>
+								<div class="panel-body">
+									    <%= link_to exclass.class_style.style, exclass %><br>
+									    <%=  exclass.date.strftime("%B %d, %Y") %>
+								</div>
+								  
+							</div>
+					 <% end %>
+
+					 <div class="col-md-3 col-md-push-9">
+						 <% if current_user.trainer? %>
+						 <%= button_to "New Class", new_exercise_class_path, method: :get, class: "btn btn-primary" %>
+						 <%end%>
+					</div>
+ 		</div>
+ 	</div>
+  
