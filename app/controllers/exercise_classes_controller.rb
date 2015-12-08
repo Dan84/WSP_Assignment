@@ -9,6 +9,9 @@ class ExerciseClassesController < ApplicationController
   def index
 
   	@exerciseclasses = ExerciseClass.all
+
+    @classes_upcoming = ExerciseClass.upcoming.paginate(page: params[:upcoming])
+    @classes_past = ExerciseClass.past.paginate(page: params[:past])
   end
 
   def create

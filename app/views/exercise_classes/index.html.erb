@@ -3,19 +3,13 @@
 <h1>All Classes</h1>
 	<div class="row">
  		<div class="col-md-8 col-xs-push-2">
+ 					<h2>Upcoming</h2>
+					<%= render 'shared/class_list', object: @classes_upcoming%>
+					<%= will_paginate @classes_upcoming, :param_name => "upcoming" %>
 
-					 <% @exerciseclasses.each do |exclass| %>
-							<div class="panel panel-info">
-								<div class="panel-heading">
-								    <h3 class="panel-title"><%= exclass.title%></h3>
-								 </div>
-								<div class="panel-body">
-									    <%= link_to exclass.class_style.style, exclass %><br>
-									    <%=  exclass.date.strftime("%B %d, %Y") %>
-								</div>
-								  
-							</div>
-					 <% end %>
+					<h2>Past</h2>
+					<%= render 'shared/class_list', object: @classes_past %>
+					<%= will_paginate @classes_past, :param_name => "past" %>
 
 					 <div class="col-md-3 col-md-push-9">
 						 <% if current_user.trainer? %>

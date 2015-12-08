@@ -1,31 +1,17 @@
-<h1>Update Class</h1>
-
 <% provide(:title, 'Exercise Class Entry') %>
-
+<h1><%= "Editing #{@exerciseclass.title}" %></h1>
+<% provide(:button_text, 'Update Class') %>
 
 <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <%= form_for(@exerciseclass) do |f| %>
-       <%= render 'error_messages', object: f.object %>
-          <%= f.label :title %>
-          <%= f.text_field :title %>
-
-          <%= f.label :description %>
-          <%= f.text_area :description %>
-
-          <%= f.label :class_style %><br />
-          <%= f.collection_select(:class_style_id, ClassStyle.all, :id, :style, {}, {:class => "foo"} ) %>
-
-          <%= f.label :class_level %>
-          <%= f.collection_radio_buttons(:class_level_id, ClassLevel.all.order(:level), :id, :level, {}, {:class => "bar"}   ) %>
-
-          <%= f.label :date %>
-          <%= f.date_field :date%>
-
-  
-
-
-          <%= f.submit "Save Changes", class: "btn btn-primary" %>
-        <% end %>
+        <div class="col-md-6 col-md-offset-3">
+              <div class = "panel panel-default">
+                  <div class = "panel-body">       
+                    <%= render 'classform'%>
+                  </div>
+              </div>
+        </div>
+         
+        
       </div>
     </div>

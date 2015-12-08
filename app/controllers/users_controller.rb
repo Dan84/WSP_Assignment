@@ -1,25 +1,26 @@
 class UsersController < ApplicationController
-
-  before_action :logged_in_user, only: [:edit, :edit,:update]
+  before_filter :logged_in_user
+  before_action :logged_in_user, only: [:read,:edit, :edit,:update]
   before_action :correct_user,   only: [:edit, :update]
 
 	def show
+        logged_in_user
         @user = User.find(params[:id])
+        @bookings = @user.attendances
+        @createdclasses = @user.exercise_classes
        # @articles = @user.articles.paginate(page: params[:page])
       end
 
-  def index
+  def index  
 
-    
-
-            unless (is_user_admin)
-
-                @users = User.where("trainer" => true)  
+            if !logged_in?
+                redirect_to login_url
+              elsif (current_user.trainer?)
+                @users = User.all 
                 else
+                  @users = User.where("trainer" => true) 
                   
-                  @users = User.all
-                end
-      
+                end     
 end
 
       
@@ -39,7 +40,7 @@ end
   	@user = User.new(user_params)
   	if @user.save
       remember @user
-      flash[:success] = "Welcome to the Twitter App!"    # NEW LINE
+      flash[:success] = "Welcome !"   
   		redirect_to @user
   	   else
 		        render 'new'

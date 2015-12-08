@@ -1,0 +1,23 @@
+ <%= form_for(@exerciseclass) do |f| %>
+       <%= render 'error_messages', object: f.object %>
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+
+          <%= f.label :class_style %><br />
+          <%= f.collection_select(:class_style_id, ClassStyle.all, :id, :style, {}, {:class => "foo"} ) %>
+
+          <%= f.label :class_level %>
+          <%= f.collection_radio_buttons(:class_level_id, ClassLevel.all.order(:level), :id, :level, {}, {:class => "bar"}   ) %>
+
+          <%= f.label :date %>
+          <%= f.date_field :date%>
+            
+
+          <%= f.submit yield(:button_text), class: "btn btn-success" %>
+
+<% end %>
+
+          

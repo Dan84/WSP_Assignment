@@ -28,7 +28,7 @@
         <%end%>
         <div class="panel panel-default">
             <div class="panel-heading">
-              <h1 class="panel-title"><h4> Whos Going</h1>
+              <h1 class="panel-title"><h4> Attening</h1>
             </div>
             <ul>
                 <% @exerciseclass.participants.each do |attendee| %>
@@ -44,8 +44,9 @@
  </div>
  <div class="row">
       <div class="col-md-3 col-xs-push-6">
+        <% unless @exerciseclass.date.past? %>   
             <%= render 'attend_form' %>
-        
+        <%end%>
         </div>
 
 </div>
